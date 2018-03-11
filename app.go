@@ -1,7 +1,7 @@
 package main
 
 import "github.com/gin-gonic/gin"
-import "gin-pp/routes"
+import "github.com/gin-pp/routes"
 
 func GetPong(c *gin.Context) {
 	c.JSON(200, gin.H{
