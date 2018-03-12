@@ -1,7 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
-import "github.com/gin-pp/routes"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/gin-pp/config"
+	"github.com/gin-pp/routes"
+)
 
 func GetPong(c *gin.Context) {
 	c.JSON(200, gin.H{
@@ -11,6 +14,7 @@ func GetPong(c *gin.Context) {
 
 func main() {
 	r := gin.Default()
+	r.Use(config.BeforeAll())
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "ping",
