@@ -1,6 +1,8 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gin-pp/config"
 	"github.com/gin-pp/routes"
@@ -15,9 +17,15 @@ func GetPong(c *gin.Context) {
 func main() {
 	r := gin.Default()
 	r.Use(config.BeforeAll())
+	r.LoadHTMLGlob("templates/*")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "ping",
+		})
+	})
+	r.GET("/index", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"title": "Main website",
 		})
 	})
 	r.GET("/pong", GetPong)
