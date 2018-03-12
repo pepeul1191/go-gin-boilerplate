@@ -19,6 +19,7 @@ func main() {
 	r.GET("/pong", GetPong)
 	r.GET("/departamento/listar", routes.DepartamentoListar)
 	r.GET("/provincia/listar/:departamento_id", routes.ProvinciaListar)
+	r.GET("/distrito/buscar", routes.DistritoBuscar)
 	r.GET("/distrito/listar/:provincia_id", routes.DistritoListar)
 	r.Run() // listen and serve on 0.0.0.0:8080
 }

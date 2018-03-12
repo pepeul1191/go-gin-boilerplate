@@ -24,3 +24,15 @@ func DistritoListar(c *gin.Context) {
 		}
 	}
 }
+
+func DistritoBuscar(c *gin.Context) {
+	var nombre string = c.Query("nombre")
+	var distritos []models.DepartamentoProvinciaDistrito
+	if err := config.Database().Limit(10).Where("nombre LIKE ?", nombre+"%").Find(&distritos).Error; err != nil {
+		fmt.Println(err)
+	} else {
+		c.JSON(200, gin.H{
+			"rpta": distritos,
+		})
+	}
+}
