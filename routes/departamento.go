@@ -2,6 +2,7 @@ package routes
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-pp/config"
@@ -14,11 +15,16 @@ func DepartamentoListar(c *gin.Context) {
 		fmt.Println(err)
 	} else {
 		for i := 0; i < len(departamentos); i++ {
-			fmt.Println(departamentos[i].ToString())
+			//fmt.Println(departamentos[i].ToString())
+			fmt.Println(departamentos[i].Nombre)
 		}
-		//c.String(200, "departamento/listar")
+		fmt.Fprintf(os.Stdout, "%s", departamentos)
+		//fmt.Println((json.Marshal(departamentos)))
+		//c.String(200, string(departamentos))
+
 		c.JSON(200, gin.H{
 			"rpta": departamentos,
 		})
+
 	}
 }
