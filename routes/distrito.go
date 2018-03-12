@@ -36,3 +36,17 @@ func DistritoBuscar(c *gin.Context) {
 		})
 	}
 }
+
+func DistritoNombre(c *gin.Context) {
+	distrito_id, err := strconv.ParseInt(c.Param("distrito_id"), 10, 64)
+	if err != nil {
+		c.String(500, "Error: El parámetro enviado no se pudo parsear a entero")
+	} else {
+		var distrito models.DepartamentoProvinciaDistrito
+		if err := config.Database().Where("id = ?", distrito_id).First(&distrito).Error; err != nil {
+			fmt.Println(err)
+		} else {
+			c.String(200, distrito.Nombre)
+		}
+	}
+}
