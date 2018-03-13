@@ -7,6 +7,11 @@ Instalación de dependencias:
 
 Las variables globales deben empezar con mayúscula
 
+Autoreload ante cambios:
+
+    $ go get github.com/codegangsta/gin
+    $ gin run main.go
+
 ---
 
 Fuentes:
@@ -17,3 +22,4 @@ Fuentes:
 + http://gorm.io/
 + https://github.com/jinzhu/gorm
 + https://stackoverflow.com/questions/38541598/why-is-it-possible-to-export-variable-of-private-type
++ https://github.com/codegangsta/gin
