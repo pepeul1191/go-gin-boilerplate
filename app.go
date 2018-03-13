@@ -16,8 +16,11 @@ func GetPong(c *gin.Context) {
 
 func main() {
 	r := gin.Default()
-	r.Use(config.BeforeAll())
 	r.LoadHTMLGlob("templates/*")
+	r.Static("/public", "./public")
+	r.StaticFile("/favicon.ico", "./public/favicon.ico")
+	r.Use(config.BeforeAll())
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "ping",
