@@ -6,9 +6,9 @@ import (
 )
 
 type Distrito struct {
-	ID           int    `gorm:"primary_key" json:id`
-	Nombre       string `gorm:"column:nombre" json:nombre`
-	Provincia_id int    `gorm:"column:provincia_id"`
+	ID           int    `gorm:"primary_key" json:"id"`
+	Nombre       string `gorm:"column:nombre" json:"nombre"`
+	Provincia_id int    `gorm:"column:provincia_id" json:"provincia_id,omitempty"`
 }
 
 func (Distrito) TableName() string {
