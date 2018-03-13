@@ -1,4 +1,8 @@
 package config
 
-var BaseUrl = "http://localhost:8080/"
-var StaticUrl = "http://localhost:8080/public/"
+var Constants = make(map[string]string)
+
+func SetConstants() {
+	Constants["BASE_URL"] = "http://localhost:8080/"
+	Constants["STATIC_URL"] = "http://localhost:8080/public/"
+}

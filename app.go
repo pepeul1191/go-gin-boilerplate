@@ -11,13 +11,15 @@ import (
 func GetPong(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message":    "pong",
-		"BASE_URL":   config.BaseUrl,
-		"STATIC_URL": config.StaticUrl,
+		"BASE_URL":   config.Constants["BASE_URL"],
+		"STATIC_URL": config.Constants["STATIC_URL"],
 	})
 }
 
 func main() {
 	r := gin.Default()
+	// seteando mapa de variables globales
+	config.SetConstants()
 	// configuraciones de vistas y archivos estáticos
 	r.LoadHTMLGlob("templates/**/*")
 	r.Static("/public", "./public")
